@@ -3,3 +3,4 @@
 /microbloggos-api/node_modules/
 /microbloggos-client/node_modules/
 /microbloggos-api/config/token.js
+/db/
