@@ -1,0 +1,4 @@
+# Created by .ignore support plugin (hsz.mobi)
+.idea
+/microbloggos-api/node_modules/
+/microbloggos-client/node_modules/
