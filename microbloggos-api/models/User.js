@@ -1,8 +1,10 @@
-var mongoose              = require('mongoose');
-var Schema                = mongoose.Schema;
-var passportLocalMongoose = require('passport-local-mongoose');
+var mongoose   = require('mongoose');
+var db         = require('./../config/db');
+var jwt        = require('jsonwebtoken');
+var token      = require('./../config/token');
 
-var UserSchema = new Schema({
+
+var userSchema = new mongoose.Schema({
     username:  {
         type: String,
         required: true,
@@ -23,6 +25,18 @@ var UserSchema = new Schema({
     }
 });
 
-UserSchema.plugin(passportLocalMongoose);
+userSchema.methods.generateJwt = function() {
+    var expiry = new Date();
+    expiry.setDate(expiry.getDate() + 7);
 
-module.exports = mongoose.model('User', UserSchema);
+    return jwt.sign({
+        _id: this._id,
+        email: this.email,
+        name: this.name,
+        exp: parseInt(expiry.getTime() / 1000)
+    }, token.secret);
+};
+
+var User       = mongoose.model('User', userSchema);
+
+module.exports = User;
