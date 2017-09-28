@@ -50,23 +50,23 @@ var register = function(req, res){
 
     if (verif_form !== ""){
         console.log("ERROR: " + verif_form);
-        res.status(400).send(verif_form);
+        res.status(400).json({message: verif_form});
     }
     else {
         bcrypt.hash(req.body["password"], saltRounds, function(err, hash) {
             if (err) {
                 console.log("ERROR: " + err);
-                res.status(404).send(errmsg);
+                res.status(404).json({message: errmsg});
             }
             else {
                 new User({name: req.body["name"], email: req.body["email"], password: hash}).save(function (err, user){
                     if (err) {
                         console.log("ERROR: " + err.message);
                         if (err.code === 11000) {
-                            res.status(400).send("Duplicate users");
+                            res.status(400).json({message: "Duplicate users"});
                         }
                         else {
-                            res.status(404).send(errmsg);
+                            res.status(404).json({message: errmsg});
                         }
                     }
                     else {
@@ -87,7 +87,6 @@ var register = function(req, res){
 var login = function(req, res){
 
     var verif_form = controlLForm(req.body);
-    console.log(verif_form);
     if (verif_form !== ""){
         console.log("ERROR: " + verif_form);
         res.status(400).send(verif_form);
@@ -95,29 +94,29 @@ var login = function(req, res){
     else {
         User.findOne({ email: req.body["email"]}, function(err, user) {
             if (err) {
-                console.log(err.message);
-                res.status(404).send("Error during login");
+                console.log("ERROR: " + err.message);
+                res.status(404).json({message: "Error during login"});
             }
             else {
                 if (user === null) {
-                    res.status(404).send("No user with username " + req.body["email"]);
+                    res.status(404).json({message: "No user with email " + req.body["email"]});
                 }
                 else {
                     bcrypt.compare(req.body["password"], user.password, function(err, result) {
                         if (err) {
-                            console.log(err.message);
-                            res.status(400).send("Error during login");
+                            console.log("ERROR: " + err.message);
+                            res.status(400).json({message: "Error during login"});
                         }
                         else{
                             if (result) {
-                                token = user.generateJwt();
+                                var token = user.generateJwt();
                                 res.status(200);
                                 res.json({
                                     "token" : token
                                 });
                             }
                             else{
-                                res.status(400).send("Incorrect password");
+                                res.status(400).json({message: "Incorrect password"});
                             }
                         }
                     });
