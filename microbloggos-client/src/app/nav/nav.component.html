@@ -1,3 +1,8 @@
-<p>
-  nav works!
-</p>
+<h3>Menu</h3>
+
+<ul>
+  <li *ngIf="!user"><a routerLink="/login">Login</a> or <a routerLink="/register">Register</a></li>
+  <li *ngIf="user"><span (click)="logout()">Logout</span></li>
+  <li>Users</li>
+  <li>Profil</li>
+</ul>
