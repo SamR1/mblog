@@ -11,14 +11,14 @@ function validateEmail(email) {
 function controlRForm(form) {
     var ret = "";
 
-    if (form["name"]          === undefined || form["name"]          === "" ||
-        form["email"]         === undefined || form["name"]          === "" ||
+    if (form["username"]      === undefined || form["username"]          === "" ||
+        form["email"]         === undefined || form["email"]          === "" ||
         form["password"]      === undefined || form["password"]      === "" ||
         form["password_conf"] === undefined || form["password_conf"] === "" ) {
         ret += "All fields are mandatory.\n";
     }
     else {
-        if (form["name"].length < 2 || form["name"].length > 10) {
+        if (form["username"].length < 2 || form["username"].length > 10) {
             ret += "Username: 2 to 10 characters required.\n";
         }
         if (form["password"] !== form["password_conf"]) {
@@ -59,14 +59,14 @@ var register = function(req, res){
                 res.status(404).json({message: errmsg});
             }
             else {
-                new User({name: req.body["name"], email: req.body["email"], password: hash}).save(function (err, user){
+                new User({ username: req.body["username"], email: req.body["email"], password: hash }).save(function (err, user){
                     if (err) {
                         console.log("ERROR: " + err.message);
                         if (err.code === 11000) {
-                            res.status(400).json({message: "Duplicate users"});
+                            res.status(400).json({ message: "Duplicate users"} );
                         }
                         else {
-                            res.status(404).json({message: errmsg});
+                            res.status(404).json({ message: errmsg });
                         }
                     }
                     else {
@@ -75,7 +75,8 @@ var register = function(req, res){
                         token = user.generateJwt();
                         res.status(200);
                         res.json({
-                            "token" : token
+                            token : token,
+                            user: user
                         });
                     }
                 });
@@ -92,31 +93,32 @@ var login = function(req, res){
         res.status(400).send(verif_form);
     }
     else {
-        User.findOne({ email: req.body["email"]}, function(err, user) {
+        User.findOne({ email: req.body["email"] }, function(err, user) {
             if (err) {
                 console.log("ERROR: " + err.message);
                 res.status(404).json({message: "Error during login"});
             }
             else {
                 if (user === null) {
-                    res.status(404).json({message: "No user with email " + req.body["email"]});
+                    res.status(404).json({ message: "No user with email " + req.body["email"] });
                 }
                 else {
                     bcrypt.compare(req.body["password"], user.password, function(err, result) {
                         if (err) {
                             console.log("ERROR: " + err.message);
-                            res.status(400).json({message: "Error during login"});
+                            res.status(400).json({ message: "Error during login" });
                         }
                         else{
                             if (result) {
                                 var token = user.generateJwt();
                                 res.status(200);
                                 res.json({
-                                    "token" : token
+                                    token : token,
+                                    user: user
                                 });
                             }
                             else{
-                                res.status(400).json({message: "Incorrect password"});
+                                res.status(400).json({ message: "Incorrect password" });
                             }
                         }
                     });
