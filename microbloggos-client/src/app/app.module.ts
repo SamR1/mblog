@@ -6,17 +6,21 @@ import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
 import { UserComponent } from './user/user.component';
 import { PostComponent } from './post/post.component';
+import { MainLayoutComponent } from './main-layout/main-layout.component';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavComponent,
     UserComponent,
-    PostComponent
+    PostComponent,
+    MainLayoutComponent
   ],
   imports: [
     NgbModule.forRoot(),
-    BrowserModule
+    BrowserModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
