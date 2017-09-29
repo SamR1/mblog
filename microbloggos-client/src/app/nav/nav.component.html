@@ -1,8 +1,10 @@
 <h3>Menu</h3>
 
 
-<span *ngIf="!authService.user"><a routerLink="/login">Login</a> or <a routerLink="/register">Register</a><br></span>
-<span *ngIf="authService.user"><button (click)="logout()">Logout</button><br></span>
-<span>Profil</span><br>
+<span *ngIf="!authService.user"><a routerLink="/login">Login</a> - <a routerLink="/register">Register</a><br></span>
+<span *ngIf="authService.user">
+    <button (click)="logout()">Logout</button><br>
+    Profile<br>
+</span>
 <span><a routerLink="/users">Users</a></span><br>
 <br>

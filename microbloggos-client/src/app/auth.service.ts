@@ -7,7 +7,10 @@ export class AuthService {
   user = null;
 
   constructor() {
-    this.saveToken(localStorage.getItem('token'));
+    const token = localStorage.getItem('token');
+    if (token === null) {
+        this.saveToken(localStorage.getItem('token'));
+    }
   }
 
   saveToken(token) {
