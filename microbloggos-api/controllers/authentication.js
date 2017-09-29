@@ -74,10 +74,7 @@ var register = function(req, res){
                         var token;
                         token = user.generateJwt();
                         res.status(200);
-                        res.json({
-                            token : token,
-                            user: user
-                        });
+                        res.json({ token : token });
                     }
                 });
             }
@@ -112,10 +109,7 @@ var login = function(req, res){
                             if (result) {
                                 var token = user.generateJwt();
                                 res.status(200);
-                                res.json({
-                                    token : token,
-                                    user: user
-                                });
+                                res.json({ token : token });
                             }
                             else{
                                 res.status(400).json({ message: "Incorrect password" });

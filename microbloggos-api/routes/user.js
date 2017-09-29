@@ -1,6 +1,6 @@
 var express   = require('express');
 var router    = express.Router();
-var ctrlUsers = require('../controllers/users');
+var ctrlUser  = require('../controllers/user');
 var jwt       = require('express-jwt');
 var token     = require('../config/token');
 var auth      = jwt({
@@ -9,9 +9,7 @@ var auth      = jwt({
 });
 
 
-/* Users */
-router.get('/', auth, ctrlUsers.usersReadAll);
-router.put('/:userid', auth, ctrlUsers.usersUpdateOne);
-router.delete('/:userid', auth, ctrlUsers.usersDeleteOne);
+/* User */
+router.get('/', auth, ctrlUser.getProfile);
 
 module.exports = router;

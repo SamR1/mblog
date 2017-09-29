@@ -2,6 +2,7 @@ var express   = require('express');
 var router    = express.Router();
 var ctrlAuth  = require('../controllers/authentication');
 
+
 /* Index */
 router.get('/', function(req, res){
     res.json({ message: 'API. No rendering page' });
