@@ -7,8 +7,8 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AuthService } from './auth.service';
-import { MainLayoutComponent } from './main-layout/main-layout.component';
-import { NavComponent } from './nav/nav.component';
+import { MainLayoutComponent } from './main/main-layout/main-layout.component';
+import { NavComponent } from './main/nav/nav.component';
 import { PostComponent } from './post/post.component';
 
 import { UserModule } from './user/user.module';
