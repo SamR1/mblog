@@ -6,7 +6,9 @@ export class AuthService {
 
   user = null;
 
-  constructor() { }
+  constructor() {
+    this.saveToken(localStorage.getItem('token'));
+  }
 
   saveToken(token) {
     localStorage.setItem('token', token);
