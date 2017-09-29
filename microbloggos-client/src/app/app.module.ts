@@ -4,17 +4,20 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { Http, HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
 
+import { UsersModule } from './users/users.module';
+
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
 import { UserComponent } from './user/user.component';
-import { UsersComponent } from './users/users.component';
+// import { UsersComponent } from './users/users.component';
 import { PostComponent } from './post/post.component';
 import { MainLayoutComponent } from './main-layout/main-layout.component';
-import { AppRoutingModule } from './app-routing.module';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { AuthService } from './auth.service';
 
+import { AppRoutingModule } from './app-routing.module';
+import { UserRoutingModule } from './users/users-routing.module';
 
 @NgModule({
   declarations: [
@@ -25,12 +28,14 @@ import { AuthService } from './auth.service';
     MainLayoutComponent,
     LoginComponent,
     RegisterComponent,
-    UsersComponent
+    // UsersComponent
   ],
   imports: [
     NgbModule.forRoot(),
     BrowserModule,
     AppRoutingModule,
+    UsersModule,
+    UserRoutingModule,
     HttpModule,
     FormsModule
   ],

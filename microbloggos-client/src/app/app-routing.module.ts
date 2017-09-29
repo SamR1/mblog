@@ -3,7 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { NavComponent } from './nav/nav.component';
 import { UserComponent } from './user/user.component';
-import { UsersComponent } from './users/users.component';
 import { PostComponent } from './post/post.component';
 import { MainLayoutComponent } from './main-layout/main-layout.component';
 import { LoginComponent } from './login/login.component';
@@ -40,17 +39,6 @@ const routes: Routes = [
                 {
                     left: [ NavComponent, UserComponent ],
                     right: [ RegisterComponent ]
-                }
-        },
-    },
-    {
-        path: 'users',
-        component: MainLayoutComponent,
-        data: {
-            composition:
-                {
-                    left: [ NavComponent, UserComponent ],
-                    right: [ UsersComponent ]
                 }
         },
     }
