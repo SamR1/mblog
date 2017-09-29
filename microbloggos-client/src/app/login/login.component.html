@@ -1,0 +1,13 @@
+<fieldset>
+  <legend>Login</legend>
+  <form action="/login" method="post">
+    <div>
+      <label for="mail">Mail</label>
+      <input id="mail" name="mail" #mail/><br>
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" #password/><br>
+      <input type="submit" value="Submit" (click)="login(mail.value, password.value)"/>
+    </div>
+  </form>
+</fieldset>
+
