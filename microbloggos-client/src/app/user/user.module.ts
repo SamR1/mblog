@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { UserComponent} from './user/user.component';
 import { LoginComponent} from './login/login.component';
 import { RegisterComponent} from './register/register.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   imports: [
@@ -13,7 +14,8 @@ import { RegisterComponent} from './register/register.component';
   declarations: [
     UserComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    ProfileComponent
   ]
 })
 export class UserModule { }

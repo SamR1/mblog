@@ -5,7 +5,8 @@ import { MainLayoutComponent } from '../main/main-layout/main-layout.component';
 import { NavComponent } from '../main/nav/nav.component';
 import { UserComponent} from './user/user.component';
 import { LoginComponent} from './login/login.component';
-import { RegisterComponent} from './register/register.component';
+import { RegisterComponent } from './register/register.component';
+import { ProfileComponent } from './profile/profile.component';
 
 
 const routes: Routes = [
@@ -28,6 +29,17 @@ const routes: Routes = [
                 {
                     left: [NavComponent, UserComponent],
                     right: [RegisterComponent]
+                }
+        }
+    },
+    {
+        path: 'profile',
+        component: MainLayoutComponent,
+        data: {
+            composition:
+                {
+                    left: [NavComponent, UserComponent],
+                    right: [ProfileComponent]
                 }
         }
     }
