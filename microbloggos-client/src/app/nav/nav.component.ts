@@ -9,10 +9,7 @@ import { AuthService} from '../auth.service';
 })
 export class NavComponent implements OnInit {
 
-  // user = null;
-
   constructor(private router: Router, private authService: AuthService) {
-    // this.user = authService.user;
   }
 
   ngOnInit() {
@@ -20,8 +17,6 @@ export class NavComponent implements OnInit {
 
   logout() {
     this.authService.deleteToken();
-    // console.log(this.user);
-    console.log(this.authService.user);
     this.router.navigateByUrl('/');
     console.log('toto');
   }
