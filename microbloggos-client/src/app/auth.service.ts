@@ -19,10 +19,6 @@ export class AuthService {
     this.user.username = payload.username;
   }
 
-  getToken() {
-    return localStorage.getItem('token');
-  }
-
   deleteToken() {
     localStorage.removeItem('token');
     this.user = null;

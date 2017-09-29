@@ -1,3 +1,16 @@
-<p>
-  register works!
-</p>
+<fieldset>
+  <legend>Register</legend>
+  <form action="/register" method="post">
+    <div>
+      <label for="username">Name</label>
+      <input id="username" name="username" #username/><br>
+      <label for="mail">Mail</label>
+      <input id="mail" name="mail" #mail/><br>
+      <label for="password">Password</label>
+      <input type="password" id="password" name ="password" #password/><br>
+      <label for="password_conf">Password confirmation</label>
+      <input type="password" id="password_conf" name ="password_conf" #password_conf/><br>
+      <input type="submit" value="Submit" (click)="register(username.value, mail.value, password.value, password_conf.value)"/>
+    </div>
+  </form>
+</fieldset>
