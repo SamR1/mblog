@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Http } from '@angular/http';
 import { Router } from '@angular/router';
+import { AuthService} from './../auth.service';
 
 @Component({
   selector: 'app-login',
@@ -9,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private http: Http, private router: Router) { }
+  constructor(private http: Http, private router: Router, private authService: AuthService) { }
 
   ngOnInit() { }
 
@@ -17,7 +18,7 @@ export class LoginComponent implements OnInit {
       const apiUrl = 'http://localhost:3000/api/login';
       this.http.post(apiUrl, {email: email, password: password}).subscribe(
           res => {
-              localStorage.setItem('token', res.json().token);
+              this.authService.saveToken(res.json().token);
               this.router.navigateByUrl('/');
           },
           err => console.log(err));
