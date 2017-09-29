@@ -3,20 +3,33 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { MainLayoutComponent } from '../main-layout/main-layout.component';
 import { NavComponent } from '../nav/nav.component';
-import { UserComponent } from '../user/user/user.component';
-import { AllusersComponent } from './allusers/allusers.component';
+import { UserComponent} from './user/user.component';
+import { LoginComponent} from './login/login.component';
+import { RegisterComponent} from './register/register.component';
+
 
 const routes: Routes = [
     {
-        path: 'users',
+        path: 'login',
         component: MainLayoutComponent,
         data: {
             composition:
                 {
                     left: [ NavComponent, UserComponent ],
-                    right: [ AllusersComponent ]
+                    right: [ LoginComponent ]
                 }
         },
+    },
+    {
+        path: 'register',
+        component: MainLayoutComponent,
+        data: {
+            composition:
+                {
+                    left: [NavComponent, UserComponent],
+                    right: [RegisterComponent]
+                }
+        }
     }
 ];
 
@@ -28,4 +41,4 @@ const routes: Routes = [
         RouterModule
     ]
 })
-export class UsersRoutingModule { }
+export class UserRoutingModule { }
