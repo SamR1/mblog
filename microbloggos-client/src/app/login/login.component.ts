@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
   ngOnInit() { }
 
   login(email, password) {
-      const apiUrl = 'http://localhost:3000/login';
+      const apiUrl = 'http://localhost:3000/api/login';
       this.http.post(apiUrl, {email: email, password: password}).subscribe(
           res => {
               localStorage.setItem('token', res.json().token);
