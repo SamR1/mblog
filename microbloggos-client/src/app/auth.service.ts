@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { User } from './models/User';
+import {isUndefined} from "util";
 
 @Injectable()
 export class AuthService {
@@ -8,8 +9,8 @@ export class AuthService {
 
   constructor() {
     const token = localStorage.getItem('token');
-    if (token === null) {
-        this.saveToken(localStorage.getItem('token'));
+    if (!isUndefined(token) && token !== null) {
+      this.saveToken(localStorage.getItem('token'));
     }
   }
 
