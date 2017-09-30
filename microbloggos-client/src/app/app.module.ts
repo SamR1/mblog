@@ -6,7 +6,7 @@ import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { AuthService } from './auth.service';
+import { AuthService } from './services/auth.service';
 import { MainLayoutComponent } from './main/main-layout/main-layout.component';
 import { NavComponent } from './main/nav/nav.component';
 import { PostComponent } from './post/post.component';
