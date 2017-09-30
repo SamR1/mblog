@@ -18,7 +18,6 @@ export class NavComponent implements OnInit {
   logout() {
     this.authService.deleteToken();
     this.router.navigateByUrl('/');
-    console.log('toto');
   }
 
 }

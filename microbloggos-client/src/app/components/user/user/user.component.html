@@ -1,9 +1,9 @@
-<h3>User</h3>
+<div class="container user">
+  <div class="card" *ngIf="authService.user">
+    <div class="card-header">{{ authService.user.username }}</div>
+    <div class="card-body">
+      test
+    </div>
+  </div>
+</div>
 
-<ul>
-  <li>Name</li>
-  <li>Bio</li>
-  <li>Posts</li>
-  <li>Followers</li>
-  <li>Following</li>
-</ul>
