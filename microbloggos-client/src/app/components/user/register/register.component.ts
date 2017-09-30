@@ -12,8 +12,11 @@ export class RegisterComponent implements OnInit {
 
   constructor(private http: Http, private router: Router, private authService: AuthService) { }
 
-  ngOnInit() {
-  }
+    ngOnInit() {
+        if (this.authService.user !== null) {
+            this.router.navigateByUrl('/');
+        }
+    }
 
   register(username, email, password, password_conf) {
       const apiUrl = 'http://localhost:3000/api/register';

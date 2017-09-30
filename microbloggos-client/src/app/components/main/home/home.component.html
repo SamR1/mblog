@@ -1,6 +1,6 @@
 <div class="card">
   <div class="card-header">Welcome on µBloggos</div>
   <div class="card-body">
-    <p>You must be logged or registered to see posts.</p>
+    <p *ngIf="!authService.user">You must be logged or registered to see posts.</p>
   </div>
 </div>

@@ -12,7 +12,11 @@ export class LoginComponent implements OnInit {
 
   constructor(private http: Http, private router: Router, private authService: AuthService) { }
 
-  ngOnInit() { }
+  ngOnInit() {
+      if (this.authService.user !== null) {
+          this.router.navigateByUrl('/');
+      }
+  }
 
   login(email, password) {
       const apiUrl = 'http://localhost:3000/api/login';
