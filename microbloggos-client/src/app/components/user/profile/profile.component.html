@@ -1,3 +1,10 @@
-<p>
-  profile works!
-</p>
+<div class="container user">
+  <div class="card" *ngIf="user">
+    <h3 class="card-header">Profile</h3>
+    <div class="card-body">
+      <p>Name: {{ user.username }}</p>
+      <p>Email: {{ user.email }}</p>
+      <p>Registration date: {{ user.creationDate }}</p>
+    </div>
+  </div>
+</div>

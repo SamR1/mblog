@@ -1,8 +1,8 @@
 <div class="container user">
   <div class="card" *ngIf="authService.user">
-    <div class="card-header">{{ authService.user.username }}</div>
+    <h3 class="card-header"><a routerLink="/profile">{{ authService.user.username }}</a></h3>
     <div class="card-body">
-      test
+
     </div>
   </div>
 </div>
