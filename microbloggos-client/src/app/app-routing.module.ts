@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { MainLayoutComponent } from './main/main-layout/main-layout.component';
-import { NavComponent } from './main/nav/nav.component';
-import { UserComponent } from './user/user/user.component';
-import { PostComponent } from './post/post.component';
+import { MainLayoutComponent } from './components/main/main-layout/main-layout.component';
+import { NavComponent } from './components/main/nav/nav.component';
+import { UserComponent } from './components/user/user/user.component';
+import { PostComponent } from './components/post/post.component';
 
 
 const routes: Routes = [

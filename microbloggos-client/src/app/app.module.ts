@@ -7,15 +7,15 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AuthService } from './services/auth.service';
-import { MainLayoutComponent } from './main/main-layout/main-layout.component';
-import { NavComponent } from './main/nav/nav.component';
-import { PostComponent } from './post/post.component';
+import { MainLayoutComponent } from './components/main/main-layout/main-layout.component';
+import { NavComponent } from './components/main/nav/nav.component';
+import { PostComponent } from './components/post/post.component';
 
-import { UserModule } from './user/user.module';
-import { UserRoutingModule } from './user/user-routing.module';
+import { UserModule } from './components/user/user.module';
+import { UserRoutingModule } from './components/user/user-routing.module';
 
-import { UsersModule } from './users/users.module';
-import { UsersRoutingModule } from './users/users-routing.module';
+import { UsersModule } from './components/users/users.module';
+import { UsersRoutingModule } from './components/users/users-routing.module';
 
 
 
