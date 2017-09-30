@@ -4,7 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { MainLayoutComponent } from './components/main/main-layout/main-layout.component';
 import { NavComponent } from './components/main/nav/nav.component';
 import { UserComponent } from './components/user/user/user.component';
-import { PostComponent } from './components/post/post.component';
+import { HomeComponent } from './components/main/home/home.component';
 
 
 const routes: Routes = [
@@ -15,7 +15,7 @@ const routes: Routes = [
             composition:
                 {
                     left: [ NavComponent, UserComponent ],
-                    right: [ PostComponent ]
+                    right: [ HomeComponent ]
                 }
         },
     }

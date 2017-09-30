@@ -9,7 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AuthService } from './services/auth.service';
 import { MainLayoutComponent } from './components/main/main-layout/main-layout.component';
 import { NavComponent } from './components/main/nav/nav.component';
-import { PostComponent } from './components/post/post.component';
+import { HomeComponent } from './components/main/home/home.component';
 
 import { UserModule } from './components/user/user.module';
 import { UserRoutingModule } from './components/user/user-routing.module';
@@ -24,7 +24,7 @@ import { UsersRoutingModule } from './components/users/users-routing.module';
     AppComponent,
     MainLayoutComponent,
     NavComponent,
-    PostComponent
+    HomeComponent
   ],
   imports: [
     NgbModule.forRoot(),
