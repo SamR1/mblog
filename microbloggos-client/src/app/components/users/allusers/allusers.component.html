@@ -1,8 +1,16 @@
-<h3> Users list </h3>
+<div class="card">
+  <div class="card-header">Users</div>
+  <div class="card-body">
+    <span>{{ message }}</span>
 
-<ul>
-  <li *ngFor="let user of users">
-    <span>Name : {{ user.username }}, Email: {{ user.email}}</span>
-  </li>
-</ul>
-<span>{{ message }}</span>
+    <div *ngFor="let user of users">
+      <div class="card users">
+        <div class="card-header">{{ user.username }}</div>
+        <div class="card-body">
+          <p class="card-text">Email: {{ user.email}}</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
