@@ -2,7 +2,7 @@ var Post = require('../models/Post');
 var User = require('../models/User');
 
 var postsReadAll = function(req, res){
-    Post.find({}, function(err, posts) {
+    Post.find({}, null, { sort: { creationDate: -1} }, function(err, posts) {
         if (err) {
             console.log(err.message);
             res.status(404).send("Error during reading all posts");
