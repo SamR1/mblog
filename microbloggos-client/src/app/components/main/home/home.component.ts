@@ -12,6 +12,7 @@ import { AuthService } from '../../../services/auth.service';
 export class HomeComponent implements OnInit {
 
     postForm: FormGroup;
+    posts = null;
     error = null;
     message = null;
     apiUrl = 'http://localhost:3000/api/posts/';
@@ -22,6 +23,18 @@ export class HomeComponent implements OnInit {
         this.postForm = this.formBuilder.group({
             message: ''
         });
+
+        const headers = new Headers();
+        headers.append('Authorization', 'Bearer ' + localStorage.getItem('token'));
+        this.http.get(this.apiUrl, {headers: headers}).subscribe(
+            res => {
+                if (res.status === 200) {
+                    this.posts = res.json();
+                }
+            },
+            err => {
+                this.error = err.message;
+            });
     }
 
     sendPost(postForm) {

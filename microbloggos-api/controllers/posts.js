@@ -1,4 +1,5 @@
 var Post = require('../models/Post');
+var User = require('../models/User');
 
 var postsReadAll = function(req, res){
     Post.find({}, function(err, posts) {
@@ -7,7 +8,7 @@ var postsReadAll = function(req, res){
             res.status(404).send("Error during reading all posts");
         }
         else {
-            if (users === null) {
+            if (posts === null) {
                 res.status(404).send("No posts");
             }
             else {
@@ -24,18 +25,31 @@ var newPost = function(req, res){
         });
     }
     else {
-        new Post({ message: req.body.message, author: req.payload._id })
-            .save(function (err, post){
+
+        User.findOne({_id: req.payload._id})
+            .exec(function(err, user) {
                 if (err) {
-                    console.log("ERROR: " + err.message);
-                    res.status(404).json({ message: err.message });
-                }
-                else {
-                    console.log("Registration OK");
-                    res.status(200);
-                    res.json({ message : "Post creation successful" });
+                    res.status(500).json({message: "Internal error"});
+                } else {
+                    if (user) {
+                        new Post({ message: req.body.message, author: [user] })
+                            .save(function (err, post){
+                                if (err) {
+                                    console.log("ERROR: " + err.message);
+                                    res.status(404).json({ message: err.message });
+                                }
+                                else {
+                                    console.log("Registration OK");
+                                    res.status(200);
+                                    res.json({ message : "Post creation successful" });
+                                }
+                            });
+                    } else {
+                        res.status(404).json({message: "No user with id " + req.params.userid});
+                    }
                 }
             });
+
     }
 };
 
