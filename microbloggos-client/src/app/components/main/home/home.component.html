@@ -1,8 +1,26 @@
 <div class="card">
   <div class="card-header">Welcome on µBloggos</div>
   <div class="card-body">
-    <div *ngIf="!authService.user" class="alert alert-info" role="alert">
+    <div *ngIf="error" class="alert alert-danger" role="alert">
+      {{ error }}
+    </div>
+    <div *ngIf="message" class="alert alert-success" role="alert">
+      {{ message }}
+    </div>
+    <div *ngIf="!authService.user; else elseBlock" class="alert alert-info" role="alert">
       You must be logged or registered to see posts.
     </div>
+    <ng-template #elseBlock>
+      <div class="card mb-3">
+        <div class="card-body">
+          <form [formGroup]="postForm" (ngSubmit)="sendPost(postForm.value)">
+            <div class="form-group">
+              <textarea name="message" rows="3" maxlength="140" class="form-control" formControlName="message"></textarea>
+            </div>
+            <button class="btn btn-success">Send</button>
+          </form>
+        </div>
+      </div>
+    </ng-template>
   </div>
 </div>

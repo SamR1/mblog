@@ -20,6 +20,9 @@ var userSchema = new mongoose.Schema({
         type: Date,
         default: Date.now
     },
+    posts: {
+        type: [String]
+    },
     bio: {
         type: String
     }
