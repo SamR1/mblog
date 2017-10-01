@@ -7,6 +7,7 @@ import { UserComponent} from './user/user.component';
 import { LoginComponent} from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ProfileComponent } from './profile/profile.component';
+import { EditProfileComponent } from './edit-profile/edit-profile.component';
 
 
 const routes: Routes = [
@@ -40,6 +41,17 @@ const routes: Routes = [
                 {
                     left: [NavComponent, UserComponent],
                     right: [ProfileComponent]
+                }
+        }
+    },
+    {
+        path: 'profile/edit',
+        component: MainLayoutComponent,
+        data: {
+            composition:
+                {
+                    left: [NavComponent, UserComponent],
+                    right: [EditProfileComponent]
                 }
         }
     }

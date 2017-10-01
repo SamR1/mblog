@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 import { UserComponent} from './user/user.component';
@@ -15,6 +15,7 @@ import { EditProfileComponent } from './edit-profile/edit-profile.component';
   imports: [
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
     RouterModule
   ],
   declarations: [
@@ -22,8 +23,8 @@ import { EditProfileComponent } from './edit-profile/edit-profile.component';
     LoginComponent,
     RegisterComponent,
     ProfileComponent,
-      FormatDatePipe,
-      EditProfileComponent
+    FormatDatePipe,
+    EditProfileComponent
   ]
 })
 export class UserModule { }
