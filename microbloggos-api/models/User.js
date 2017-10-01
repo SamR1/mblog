@@ -21,7 +21,7 @@ var userSchema = new mongoose.Schema({
         default: Date.now
     },
     posts: {
-        type: [String]
+        type: []
     },
     bio: {
         type: String

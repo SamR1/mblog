@@ -32,16 +32,23 @@ var newPost = function(req, res){
                     res.status(500).json({message: "Internal error"});
                 } else {
                     if (user) {
-                        new Post({ message: req.body.message, author: [user] })
-                            .save(function (err, post){
+                        var postUser = { _id: user._id, username: user.username};
+                        new Post({ message: req.body.message, author: [postUser] })
+                            .save(function (err, post){                                
                                 if (err) {
                                     console.log("ERROR: " + err.message);
                                     res.status(404).json({ message: err.message });
                                 }
                                 else {
-                                    console.log("Registration OK");
-                                    res.status(200);
-                                    res.json({ message : "Post creation successful" });
+                                    user.posts.push(post);
+                                    user.save(function (err) {
+                                        if (err) {
+                                            res.status(500).json({ message : "Error during creation" });
+                                        } else {
+                                            console.log('youpi');
+                                            res.status(200).json({ message : "Post creation successful" });
+                                        }
+                                    });
                                 }
                             });
                     } else {
