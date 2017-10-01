@@ -1,9 +1,22 @@
-<div class="container user">
-  <div class="card" *ngIf="user">
+<div class="container user" *ngIf="user">
+  <div class="card">
     <h3 class="card-header">{{ user.username }}</h3>
     <div class="card-body">
       <p>Email: {{ user.email }}</p>
       <p>Registration date: {{ user.creationDate }}</p>
+    </div>
+  </div>
+  <div class="card users">
+    <div class="card-header">User's posts</div>
+    <div *ngFor="let post of user.posts">
+      <div class="card posts">
+        <div class="card-body">
+          <blockquote class="blockquote mb-0">
+            <p>{{ post.message }}.</p>
+            <footer class="blockquote-footer"><a href="#" [routerLink]="['/users/',post.author[0]._id]">{{ post.author[0].username }}</a> - <cite title="Source Title">{{ post.creationDate }}</cite></footer>
+          </blockquote>
+        </div>
+      </div>
     </div>
   </div>
 </div>
