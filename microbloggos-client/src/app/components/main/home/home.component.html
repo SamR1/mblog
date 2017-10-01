@@ -4,9 +4,6 @@
     <div *ngIf="error" class="alert alert-danger" role="alert">
       {{ error }}
     </div>
-    <div *ngIf="message" class="alert alert-success" role="alert">
-      {{ message }}
-    </div>
     <div *ngIf="!authService.user; else elseBlock" class="alert alert-info" role="alert">
       You must be logged or registered to see posts.
     </div>
