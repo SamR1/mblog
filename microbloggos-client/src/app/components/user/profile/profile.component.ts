@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Http, Headers } from '@angular/http';
-import { AuthService} from '../../../services/auth.service';
+import { AuthService } from '../../../services/auth.service';
 import { FormatDatePipe } from '../../../pipes/format-date.pipe';
 
 @Component({

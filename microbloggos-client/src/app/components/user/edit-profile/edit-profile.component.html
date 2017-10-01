@@ -1,6 +1,7 @@
 <div class="card">
   <h3 class="card-header">Edit your profile</h3>
   <div class="card-body">
+    <p>{{ message }}</p>
     <form [formGroup]="userForm" (ngSubmit)="updateProfile()">
       <div class="form-group row">
         <label for="username" class="col-sm-4 col-form-label">username</label>
@@ -17,7 +18,7 @@
           <input name="email"
                  id="email"
                  class="form-control"
-                 formControlName="username">
+                 formControlName="email">
         </div>
       </div>
       <div class="form-group row">
