@@ -11,5 +11,6 @@ var auth      = jwt({
 
 /* User */
 router.get('/', auth, ctrlUser.getProfile);
+router.put('/', auth, ctrlUser.updateProfile);
 
 module.exports = router;

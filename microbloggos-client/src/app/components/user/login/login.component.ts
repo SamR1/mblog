@@ -10,6 +10,8 @@ import { AuthService } from '../../../services/auth.service';
 })
 export class LoginComponent implements OnInit {
 
+  error = null;
+
   constructor(private http: Http, private router: Router, private authService: AuthService) { }
 
   ngOnInit() {
@@ -25,7 +27,10 @@ export class LoginComponent implements OnInit {
               this.authService.saveToken(res.json().token);
               this.router.navigateByUrl('/');
           },
-          err => console.log(err));
+          err => {
+              console.log(err);
+              this.error = err.json().message;
+          });
   }
 
 }

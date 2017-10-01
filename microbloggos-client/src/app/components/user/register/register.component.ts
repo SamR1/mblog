@@ -10,13 +10,15 @@ import { AuthService } from '../../../services/auth.service';
 })
 export class RegisterComponent implements OnInit {
 
+  error = null;
+
   constructor(private http: Http, private router: Router, private authService: AuthService) { }
 
-    ngOnInit() {
-        if (this.authService.user !== null) {
-            this.router.navigateByUrl('/');
-        }
+  ngOnInit() {
+    if (this.authService.user !== null) {
+       this.router.navigateByUrl('/');
     }
+  }
 
   register(username, email, password, password_conf) {
       const apiUrl = 'http://localhost:3000/api/register';
@@ -26,7 +28,10 @@ export class RegisterComponent implements OnInit {
               this.authService.saveToken(res.json().token);
               this.router.navigateByUrl('/');
           },
-          err => console.log(err));
+          err => {
+              console.log(err);
+              this.error = err.json().message;
+          });
   }
 
 }

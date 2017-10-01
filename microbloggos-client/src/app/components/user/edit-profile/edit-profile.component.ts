@@ -11,7 +11,9 @@ import { AuthService } from '../../../services/auth.service';
 export class EditProfileComponent implements OnInit {
 
   userForm: FormGroup;
+  error = null;
   message = null;
+  apiUrl = 'http://localhost:3000/api/profile';
 
   constructor(private formBuilder: FormBuilder, private http: Http, private authService: AuthService) { }
 
@@ -22,10 +24,9 @@ export class EditProfileComponent implements OnInit {
           password: '',
           password_conf: ''
       });
-      const apiUrl = 'http://localhost:3000/api/profile';
       const headers = new Headers();
       headers.append('Authorization', 'Bearer ' + localStorage.getItem('token'));
-      this.http.get(apiUrl, {headers: headers}).subscribe(
+      this.http.get(this.apiUrl, {headers: headers}).subscribe(
           res => {
               this.userForm = this.formBuilder.group({
                   username: res.json().username,
@@ -36,16 +37,28 @@ export class EditProfileComponent implements OnInit {
           },
           err => {
               if (err.status === 401) {
-                  this.message = 'Unauthorized access';
+                  this.error = 'Unauthorized access';
               } else {
-                  this.message = 'Error in fetching profile data';
+                  this.error = 'Error in fetching profile data';
               }
           });
 
   }
 
-  updateProfile() {
-    console.log('update');
+  updateProfile(userForm) {
+      this.error = null;
+      this.message = null;
+
+      const headers = new Headers();
+      headers.append('Authorization', 'Bearer ' + localStorage.getItem('token'));
+
+      this.http.put(this.apiUrl, userForm, {headers: headers}).subscribe(
+          res => {
+            this.message = res.json().message;
+          },
+          err => {
+            this.error = err.json().message;
+          });
   }
 
 }
