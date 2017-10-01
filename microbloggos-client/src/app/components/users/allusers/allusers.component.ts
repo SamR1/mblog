@@ -9,13 +9,12 @@ import { Http, Headers } from '@angular/http';
 export class AllusersComponent implements OnInit {
 
   users: any;
-  message: string;
+  error: string;
 
   constructor(private http: Http) { }
 
   ngOnInit() {
 
-      console.log('user get');
       const headers = new Headers();
       headers.append('Authorization', 'Bearer ' + localStorage.getItem('token'));
       const apiUrl = 'http://localhost:3000/api/users';
@@ -28,7 +27,7 @@ export class AllusersComponent implements OnInit {
           },
           err => {
               if (err.status === 401) {
-                  this.message = 'You must be authenticated to access users list.';
+                  this.error = 'You must be authenticated to access users list.';
               }
           });
   }
