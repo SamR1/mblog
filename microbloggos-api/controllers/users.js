@@ -17,6 +17,22 @@ var usersReadAll = function(req, res){
     });
 };
 
+var usersGetOne = function(req, res){
+    console.log(req.params);
+    User.findOne({_id: req.params.userid})
+        .exec(function(err, user) {
+            if (err) {
+                res.status(500).json({message: "Internal error"});
+            } else {
+                if (user) {
+                    res.status(200).json(user);
+                } else {
+                    res.status(404).json({message: "No user with id " + req.params.userid});
+                }
+            }
+        });
+};
+
 var usersUpdateOne = function(req, res){
     res.send("usersUpdateOne");
 };
@@ -26,5 +42,6 @@ var usersDeleteOne = function(req, res){
 };
 
 exports.usersReadAll   = usersReadAll;
+exports.usersGetOne    = usersGetOne;
 exports.usersUpdateOne = usersUpdateOne;
 exports.usersDeleteOne = usersDeleteOne;

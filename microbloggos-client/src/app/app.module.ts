@@ -7,6 +7,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AuthService } from './services/auth.service';
+import { FormatDatePipe } from './pipes/format-date.pipe';
+
 import { MainLayoutComponent } from './components/main/main-layout/main-layout.component';
 import { NavComponent } from './components/main/nav/nav.component';
 import { HomeComponent } from './components/main/home/home.component';
@@ -17,7 +19,7 @@ import { UserRoutingModule } from './components/user/user-routing.module';
 import { UsersModule } from './components/users/users.module';
 import { UsersRoutingModule } from './components/users/users-routing.module';
 
-import { FormatDatePipe } from './pipes/format-date.pipe';
+
 
 
 

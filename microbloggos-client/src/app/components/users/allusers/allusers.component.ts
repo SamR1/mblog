@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Http, Headers } from '@angular/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-allusers',
@@ -11,7 +12,7 @@ export class AllusersComponent implements OnInit {
   users: any;
   error: string;
 
-  constructor(private http: Http) { }
+  constructor(private http: Http, private router: Router) { }
 
   ngOnInit() {
 

@@ -8,7 +8,6 @@ import { LoginComponent} from './login/login.component';
 import { RegisterComponent} from './register/register.component';
 import { ProfileComponent } from './profile/profile.component';
 
-import { FormatDatePipe } from '../../pipes/format-date.pipe';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
 
 @NgModule({
@@ -23,7 +22,6 @@ import { EditProfileComponent } from './edit-profile/edit-profile.component';
     LoginComponent,
     RegisterComponent,
     ProfileComponent,
-    FormatDatePipe,
     EditProfileComponent
   ]
 })

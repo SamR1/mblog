@@ -6,7 +6,7 @@
     </div>
     <div *ngFor="let user of users">
       <div class="card users">
-        <div class="card-header">{{ user.username }}</div>
+        <div class="card-header"><a href="#" [routerLink]="['/users/',user._id]">{{ user.username }}</a></div>
         <div class="card-body">
           <p class="card-text">Email: {{ user.email}}</p>
         </div>

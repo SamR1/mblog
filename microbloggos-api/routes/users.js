@@ -11,6 +11,7 @@ var auth      = jwt({
 
 /* Users */
 router.get('/', auth, ctrlUsers.usersReadAll);
+router.get('/:userid', ctrlUsers.usersGetOne);
 router.put('/:userid', auth, ctrlUsers.usersUpdateOne);
 router.delete('/:userid', auth, ctrlUsers.usersDeleteOne);
 

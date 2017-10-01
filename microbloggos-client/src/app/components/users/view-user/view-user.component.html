@@ -1,11 +1,10 @@
 <div class="container user">
   <div class="card" *ngIf="user">
-    <h3 class="card-header">Profile</h3>
+    <h3 class="card-header">View user</h3>
     <div class="card-body">
       <p>Name: {{ user.username }}</p>
       <p>Email: {{ user.email }}</p>
       <p>Registration date: {{ user.creationDate }}</p>
-      <button class="btn btn-primary" routerLink="/profile/edit">Edit my profile</button>
     </div>
   </div>
 </div>
