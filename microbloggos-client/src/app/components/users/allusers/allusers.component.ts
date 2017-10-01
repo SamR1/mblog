@@ -21,15 +21,12 @@ export class AllusersComponent implements OnInit {
       const apiUrl = 'http://localhost:3000/api/users';
       this.http.get(apiUrl, {headers: headers}).subscribe(
           res => {
-              // console.log(res.status );
               if (res.status === 200) {
                   this.users = res.json();
               }
           },
           err => {
-              if (err.status === 401) {
-                  this.error = 'You must be authenticated to access users list.';
-              }
+              this.error = err.message;
           });
   }
 
