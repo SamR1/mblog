@@ -17,7 +17,7 @@ export class FormatDatePipe implements PipeTransform {
           let time, rest;
           [time, rest] = fullTime.split('.');
 
-          return `${year}/${month}/${year} - ${time}`;
+          return `${day}/${month}/${year} - ${time}`;
       } else {
           return '00/00/00 - 00:00:00';
       }
