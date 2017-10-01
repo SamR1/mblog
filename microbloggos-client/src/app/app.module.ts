@@ -17,6 +17,8 @@ import { UserRoutingModule } from './components/user/user-routing.module';
 import { UsersModule } from './components/users/users.module';
 import { UsersRoutingModule } from './components/users/users-routing.module';
 
+import { FormatDatePipe } from './pipes/format-date.pipe';
+
 
 
 @NgModule({
@@ -37,7 +39,7 @@ import { UsersRoutingModule } from './components/users/users-routing.module';
     HttpModule,
     FormsModule
   ],
-  providers: [AuthService],
+  providers: [AuthService, FormatDatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

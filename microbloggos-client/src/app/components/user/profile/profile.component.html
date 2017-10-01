@@ -4,7 +4,7 @@
     <div class="card-body">
       <p>Name: {{ user.username }}</p>
       <p>Email: {{ user.email }}</p>
-      <p>Registration date: {{ user.creationDate }}</p>
+      <p>Registration date: {{ user.creationDate | formatDate }}</p>
     </div>
   </div>
 </div>

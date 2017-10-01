@@ -8,6 +8,8 @@ import { LoginComponent} from './login/login.component';
 import { RegisterComponent} from './register/register.component';
 import { ProfileComponent } from './profile/profile.component';
 
+import { FormatDatePipe } from '../../pipes/format-date.pipe';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -18,7 +20,8 @@ import { ProfileComponent } from './profile/profile.component';
     UserComponent,
     LoginComponent,
     RegisterComponent,
-    ProfileComponent
+    ProfileComponent,
+      FormatDatePipe
   ]
 })
 export class UserModule { }
