@@ -6,8 +6,8 @@ var validateEmail = function(email) {
 var controlRForm = function(form) {
     var ret = "";
 
-    if (form["username"]      === undefined || form["username"]          === "" ||
-        form["email"]         === undefined || form["email"]          === "" ||
+    if (form["username"]      === undefined || form["username"]      === "" ||
+        form["email"]         === undefined || form["email"]         === "" ||
         form["password"]      === undefined || form["password"]      === "" ||
         form["password_conf"] === undefined || form["password_conf"] === "" ) {
         ret += "All fields are mandatory.\n";
@@ -29,4 +29,14 @@ var controlRForm = function(form) {
     return ret;
 };
 
+function controlLForm(form) {
+    var ret = "";
+    if (form["email"]         === undefined || form["email"]         === "" ||
+        form["password"]      === undefined || form["password"]      === "" ) {
+        ret += "All fields are required.\n";
+    }
+    return ret;
+}
+
 exports.controlRForm = controlRForm;
+exports.controlLForm = controlLForm;
