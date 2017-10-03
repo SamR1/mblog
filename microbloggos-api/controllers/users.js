@@ -1,4 +1,5 @@
-var   User       = require('../models/User');
+var User = require('../models/User');
+var Post = require('../models/Post');
 
 var usersReadAll = function(req, res){
     User.find({}, function(err, users) {
@@ -22,11 +23,15 @@ var usersGetOne = function(req, res){
     User.findOne({_id: req.params.userid})
         .exec(function(err, user) {
             if (err) {
+                console.log("ERROR: " + err.message);
                 res.status(500).json({message: "Internal error"});
             } else {
                 if (user) {
-                    res.status(200).json(user);
-                } else {
+                    Post.find({ author_id: req.params.userid }, null, { sort: { creationDate: -1} }, function(err, posts) {
+                        res.status(200).json({ user: user, posts: posts });
+                    })
+                }
+                else {
                     res.status(404).json({message: "No user with id " + req.params.userid});
                 }
             }

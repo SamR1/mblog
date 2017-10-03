@@ -7,11 +7,8 @@ var postSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    // for now all user data are saved
-    // TODO: check performances
-    author: {
-        type: []
-    },
+    author_id : String,
+    author_name: String,
     creationDate: {
         type: Date,
         default: Date.now

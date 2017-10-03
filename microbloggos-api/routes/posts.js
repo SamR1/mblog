@@ -9,8 +9,8 @@ var auth      = jwt({
 });
 
 
-/* Users */
-router.get('/:id', auth, ctrlPosts.getPost);
+/* Posts */
+router.delete('/:id', auth, ctrlPosts.deletePost);
 router.get('/', auth, ctrlPosts.postsReadAll);
 router.put('/', auth, ctrlPosts.newPost);
 

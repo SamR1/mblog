@@ -57,4 +57,16 @@ export class HomeComponent implements OnInit {
             });
     }
 
+    delete(id) {
+        this.postsService.deletePost(id).subscribe(
+            res => {
+                if (res.status === 200) {
+                    this.getPosts();
+                }
+            },
+            err => {
+                console.log(err.message);
+            });
+    }
+
 }

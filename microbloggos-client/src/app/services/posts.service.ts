@@ -4,14 +4,20 @@ import { Http, Headers } from '@angular/http';
 @Injectable()
 export class PostsService {
 
-  apiUrl = 'http://localhost:3000/api/posts/';
+    apiUrl = 'http://localhost:3000/api/posts/';
 
-  constructor(private http: Http) { }
+    constructor(private http: Http) { }
 
-  getPosts() {
+    getPosts() {
       const headers = new Headers();
       headers.append('Authorization', 'Bearer ' + localStorage.getItem('token'));
       return this.http.get(this.apiUrl, {headers: headers});
-  }
+    }
+
+    deletePost(id) {
+        const headers = new Headers();
+        headers.append('Authorization', 'Bearer ' + localStorage.getItem('token'));
+        return this.http.delete(this.apiUrl + id, {headers: headers});
+    }
 
 }

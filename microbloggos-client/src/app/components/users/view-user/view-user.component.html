@@ -8,12 +8,16 @@
   </div>
   <div class="card users">
     <div class="card-header">User's posts</div>
-    <div *ngFor="let post of user.posts">
+    <div *ngFor="let post of userPosts">
       <div class="card posts">
         <div class="card-body">
           <blockquote class="blockquote mb-0">
             <p>{{ post.message }}.</p>
-            <footer class="blockquote-footer"><a href="#" [routerLink]="['/users/',post.author[0]._id]">{{ post.author[0].username }}</a> - <cite title="Source Title">{{ post.creationDate }}</cite></footer>
+            <footer class="blockquote-footer"><a href="#" [routerLink]="['/users',post.author_id]">
+              {{ post.author_name }}</a> - <cite title="Source Title">{{ post.creationDate }}</cite>
+              <span *ngIf="post.author_id === authService.user._id"><i class="fa fa-pencil" aria-hidden="true"></i>
+                <a (click)="delete(post._id)"><i class="fa fa-trash" aria-hidden="true"></i></a>
+              </span></footer>
           </blockquote>
         </div>
       </div>
