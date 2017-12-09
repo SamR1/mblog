@@ -4,4 +4,4 @@
 
 ---
 
-Microblogging app (realized during the [CodingAcademy](http://www.coding-academy.fr/en/) training).  
+Microblogging app (realized during the [CodingAcademy](http://www.coding-academy.fr/en/) training) - archived repository  
